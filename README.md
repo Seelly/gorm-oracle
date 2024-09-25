@@ -1,12 +1,8 @@
 # GORM Oracle driver
-
 ## Description
-GORM-ORACLE is a GORM driver that does not depend on the Oracle client, Based on [github.com/CengSin/oracle](https://github.com/CengSin/oracle)
-, not thoroughly tested and not recommended for production use.
+📍 基于[sijms/go-ora](https://github.com/sijms/go-ora/)的纯Go Gorm Oracle 驱动
 
-fork自github.com/wdrabbit/gorm-oracle在原版基础上修改以支持gorm1.25版本。
-
-项目集成go-ora驱动,无需安装oracle客户端。
+无需安装oracle客户端。
 
 ## DB Driver
 [go-ora](https://github.com/sijms/go-ora)
@@ -35,31 +31,10 @@ type TestBean struct {
 }
 
 func main(){
-
-    databaseURL := "oracle://username:password@host:port/db"
+    databaseURL := oracle.BuildUrl(server, port, service, user, password, nil)
     db, err := gorm.Open(oracle.Open(databaseURL),&gorm.Config{})
     if err != nil {
         log.Fatal(err)
     }
-    
-    //Insert
-    datas := []bean.TestBean{
-        {"a","a","a","01",time.Now()},
-        {"b","a","a","01",time.Now()},
-    }
-    db = db.Debug().Create(&datas)
-
-    //Update
-    db = db.Debug().Where("id=?","a").Model(&bean.TestBean{}).Update("state","02")
-
-    //Delete
-    db := db.Where("id = ?","a").Delete(&bean.TestBean{})
-
-    //Select
-    var rows []bean.TestBean
-    db = db.Debug().Find(&rows)
-    
-    //do somethings
-
 }
 ```

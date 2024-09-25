@@ -4,11 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/seelly/gorm-oracle/clauses"
-	"regexp"
-	"strconv"
-	"strings"
-
-	_ "github.com/sijms/go-ora/v2"
+	oracle "github.com/sijms/go-ora/v2"
 	"github.com/thoas/go-funk"
 	"gorm.io/gorm"
 	"gorm.io/gorm/callbacks"
@@ -16,6 +12,9 @@ import (
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/migrator"
 	"gorm.io/gorm/schema"
+	"regexp"
+	"strconv"
+	"strings"
 )
 
 type Config struct {
@@ -29,6 +28,9 @@ type Dialector struct {
 	*Config
 }
 
+func BuildUrl(server string, port int, service, user, password string, options map[string]string) string {
+	return oracle.BuildUrl(server, port, service, user, password, options)
+}
 func Open(dsn string) gorm.Dialector {
 	return &Dialector{Config: &Config{DSN: dsn}}
 }
