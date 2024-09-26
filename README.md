@@ -1,13 +1,9 @@
 # GORM Oracle driver
 ## Description
-📍 基于[sijms/go-ora](https://github.com/sijms/go-ora/)的纯Go Gorm Oracle 驱动
+📍 基于[sijms/go-ora](https://github.com/sijms/go-ora/)的纯Go Gorm Oracle 驱动，无需安装oracle客户端。
 
-无需安装oracle客户端。
-📍 A pure gorm driver for Oracle , no Oracle client needed.
 
-## DB Driver
-纯go的oracle数据库驱动 [go-ora](https://github.com/sijms/go-ora)
-A pure golang development of Oracle driver. [go-ora](https://github.com/sijms/go-ora)
+📍 A pure gorm driver for Oracle base on [sijms/go-ora](https://github.com/sijms/go-ora/), no Oracle client needed.
 
 ## Quick Start
 ### how to install 
